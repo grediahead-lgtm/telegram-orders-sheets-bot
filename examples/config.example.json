@@ -1,0 +1,19 @@
+{
+  "storage": "csv",
+  "csv_path": "orders.csv",
+  "webhook_url": "https://script.google.com/macros/s/REPLACE_WITH_YOUR_DEPLOYMENT_ID/exec",
+  "owner_chat_id": null,
+  "texts": {
+    "greeting": "Hello! I take simple orders. Send /order to start, /cancel to stop.",
+    "cancelled": "Cancelled. Send /order to start again.",
+    "ask_item": "What would you like to order? (name or article)",
+    "ask_quantity": "How many? (a number from 1 to 9999)",
+    "ask_contact": "Your phone or other contact for confirmation:",
+    "ask_comment": "Any comment (size, colour, delivery)? Write '-' if none.",
+    "ask_photo": "You can send a photo (for example a screenshot of the item) or write '-' to skip.",
+    "need_text": "Please answer with text. Send /cancel to stop.",
+    "bad_quantity": "Please send a whole number from 1 to 9999.",
+    "done": "Thank you! Your order {order_id} is recorded. We will contact you.",
+    "save_failed": "Sorry, the order could not be saved right now. Please send your last answer again in a minute."
+  }
+}
