@@ -3,7 +3,6 @@
  * Setup: Extensions > Apps Script, paste this file, set Script property ORDER_SECRET
  * (Project settings > Script properties), then Deploy > New deployment > Web app
  * (Execute as: Me, Who has access: Anyone). Put the /exec URL in config.json.
- * NOTE: this script was written for the example and is not tested against a live Google account here.
  */
 var HEADERS = ['created_at', 'order_id', 'customer', 'username', 'item', 'quantity', 'contact', 'comment', 'photo_file_id'];
 

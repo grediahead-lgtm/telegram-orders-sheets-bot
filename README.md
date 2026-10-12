@@ -29,7 +29,7 @@ The bot sends each order as JSON to a small Google Apps Script web app that appe
 `python3 -m unittest discover -s tests` (no internet, no real token; the webhook is tested against a local server).
 
 ## Limits (read this)
-- The Python side is covered by automated tests. **`apps_script/Code.gs` is not tested against a live Google account** in this repository: deploy it on a test sheet first.
+- The Python side is covered by automated tests. `apps_script/Code.gs` was deployed on a test Google Sheet and checked end to end through this project's `WebhookStorage` (13 Oct 2026): a wrong secret is refused with `forbidden`, a correct one appends a row, and a value like `=1+1` stays text. The full chain with a live Telegram bot has not been run yet; try it on a test sheet first.
 - Not a shop: no payments, no stock, no prices. Dialog state is kept in memory, so a restart cancels unfinished orders.
 - Long polling from your own computer or server; put it under a process manager for production.
 - Anyone who knows the web-app URL can call it, so the secret matters. Do not commit your `config.json` with real URLs.
@@ -44,4 +44,4 @@ MIT license.
 
 **Швидкий старт:** скопіюйте `examples/config.example.json` у `config.json`, відредагуйте тексти, перевірте (`--check`) і запустіть з `TELEGRAM_BOT_TOKEN`. Для Google Таблиці вставте `apps_script/Code.gs` у Apps Script, задайте `ORDER_SECRET`, опублікуйте як веб-застосунок і вкажіть `webhook_url`.
 
-**Важливо:** Python-частину перевірено тестами; скрипт `Code.gs` не перевірявся на живому акаунті Google. Це приймання заявок, а не магазин: без оплат і складу.
+**Важливо:** Python-частину перевірено тестами; `Code.gs` розгорнуто на тестовій таблиці й перевірено наскрізно через `WebhookStorage` (хибний секрет відхиляється, правильний додає рядок, `=1+1` лишається текстом). Повний ланцюг із живим ботом Telegram ще не запускали. Це приймання заявок, а не магазин: без оплат і складу.
