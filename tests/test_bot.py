@@ -101,6 +101,15 @@ class FlowTests(unittest.TestCase):
         run(b, 1, ["/order", "Toy", "1", "c", "-", "-"])
         self.assertEqual(seen[0]["item"], "Toy")
 
+    def test_failed_owner_notification_does_not_hide_the_confirmation(self):
+        def boom(order):
+            raise RuntimeError("telegram down")
+        s = MemStorage()
+        b = bot(s, notify_owner=boom)
+        out = run(b, 1, ["/order", "Toy", "1", "c", "-", "-"])
+        self.assertIn("recorded", out[-1])
+        self.assertEqual(len(s.rows), 1)
+
     def test_long_text_is_trimmed(self):
         s = MemStorage()
         b = bot(s)

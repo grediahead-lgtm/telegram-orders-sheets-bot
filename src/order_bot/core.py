@@ -76,5 +76,8 @@ class OrderBot:
             return [t["save_failed"]]
         self.sessions.pop(chat_id, None)
         if self.notify_owner:
-            self.notify_owner(order)
+            try:
+                self.notify_owner(order)
+            except Exception:  # the order is already saved: a failed owner message must not hide the confirmation
+                pass
         return [t["done"].format(order_id=order["order_id"])]
