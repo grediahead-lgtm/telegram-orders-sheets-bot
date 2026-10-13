@@ -42,7 +42,7 @@ class FlowTests(unittest.TestCase):
     def test_full_order(self):
         s = MemStorage()
         b = bot(s)
-        out = run(b, 1, ["/order", "Bed Comfort M", "2", "+380501112233", "grey", "-"])
+        out = run(b, 1, ["/order", "Bed Comfort M", "2", "+380000000001", "grey", "-"])
         self.assertIn("20261013-0001", out[-1])
         row = s.rows[0]
         self.assertEqual((row["item"], row["quantity"], row["customer"]), ("Bed Comfort M", "2", "Ira K"))
